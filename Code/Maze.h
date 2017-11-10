@@ -5,7 +5,7 @@
 #ifndef _MAZE_H_
 #define _MAZE_H_
 
-#include <stbool.h>
+#include <stdbool.h>
 #include <stdio.h>
 
 /* Opaque structure */
