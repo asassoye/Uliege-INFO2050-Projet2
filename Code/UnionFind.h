@@ -5,6 +5,8 @@
 #ifndef _UNIONFIND_H_
 #define _UNIONFIND_H_
 
+#include <stdlib.h>
+
 /* Opaque structure */
 typedef struct union_find_t UnionFind;
 
