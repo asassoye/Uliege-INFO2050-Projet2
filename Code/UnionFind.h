@@ -5,12 +5,14 @@
 #ifndef _UNIONFIND_H_
 #define _UNIONFIND_H_
 
-#include <stdlib.h>
+#include <stdio.h>
 
 /* Opaque structure */
 typedef struct union_find_t UnionFind;
 
-typedef enum {UF_ERROR, UF_MERGED, UF_SAME} ufStatus;
+typedef enum {
+    UF_ERROR, UF_MERGED, UF_SAME
+} ufStatus;
 
 
 /* ------------------------------------------------------------------------- *
@@ -27,7 +29,7 @@ typedef enum {UF_ERROR, UF_MERGED, UF_SAME} ufStatus;
  * RETURN
  * union_find   The created union find structure.
  * ------------------------------------------------------------------------- */
-UnionFind* ufCreate(size_t n_items);
+UnionFind *ufCreate(size_t n_items);
 
 /* ------------------------------------------------------------------------- *
  * Free the memory allocated for the union find structure.
@@ -35,7 +37,7 @@ UnionFind* ufCreate(size_t n_items);
  * PARAMETERS
  * union_find   The UnionFind structure
  * ------------------------------------------------------------------------- */
-void ufFree(UnionFind* union_find);
+void ufFree(UnionFind *union_find);
 
 /* ------------------------------------------------------------------------- *
  * Merge the components containing the items $item1$ and $item2$.
@@ -52,7 +54,7 @@ void ufFree(UnionFind* union_find);
  * status       The resulting status of the merge operation; UF_SAME means
  *              the two items were already in the same component
  * ------------------------------------------------------------------------- */
-ufStatus ufUnion(UnionFind* union_find, size_t item1, size_t item2);
+ufStatus ufUnion(UnionFind *union_find, size_t item1, size_t item2);
 
 /* ------------------------------------------------------------------------- *
  * Search for the component of an item.
@@ -67,7 +69,7 @@ ufStatus ufUnion(UnionFind* union_find, size_t item1, size_t item2);
  * RETURN
  * component    the index of the component where $item$ belongs
   * ------------------------------------------------------------------------- */
-size_t ufFind(const UnionFind* union_find, size_t item);
+size_t ufFind(const UnionFind *union_find, size_t item);
 
 /* ------------------------------------------------------------------------- *
  * Count the number of components.
@@ -78,6 +80,6 @@ size_t ufFind(const UnionFind* union_find, size_t item);
  * RETURN
  * count        The number of components
  * ------------------------------------------------------------------------- */
-size_t ufComponentsCount(const UnionFind* union_find);
+size_t ufComponentsCount(const UnionFind *union_find);
 
 #endif // _UNIONFIND_H_
