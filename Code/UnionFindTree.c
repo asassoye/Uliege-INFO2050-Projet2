@@ -43,7 +43,7 @@ UnionFind *ufCreate(size_t n_items){
 
 void ufFree(UnionFind *union_find){
     for(unsigned int i = 0; i < union_find->size; i++){
-        free(&union_find->vector[i]);
+        free(union_find->vector[i]);
     }
     free(union_find->vector);
     free(union_find);
