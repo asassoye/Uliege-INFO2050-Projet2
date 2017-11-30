@@ -6,6 +6,8 @@ typedef struct cell_t Cell;
 typedef struct set_t Set;
 typedef struct node_t Node;
 
+static void setFree(Set *set);
+
 struct cell_t {
     int key;
     Cell *next;
@@ -53,6 +55,7 @@ UnionFind *ufCreate(size_t n_items) {
         if (i < n_items - 1) {
             current_node->next = malloc(sizeof(*current_node));
             current_node = current_node->next;
+            current_node = malloc(sizeof(*current_node));
             current_set = current_node->set;
             current_set = malloc(sizeof(*current_set));
             current_cel = current_set->head;
@@ -73,4 +76,37 @@ size_t ufComponentsCount(const UnionFind *union_find) {
         node = node->next;
     }
     return count;
+}
+
+void ufFree(UnionFind *union_find){
+    Node *actual = union_find->first;
+
+    Node *next = actual->next;
+
+    while(next != NULL){
+        setFree(actual->set);
+        actual = next;
+        next = actual->next;
+    }
+
+    setFree(actual->set);
+
+    free(union_find);
+
+}
+
+static void setFree(Set *set){
+    Cell *actual = set->head;
+
+    Cell *next = actual->next;
+
+    while(set->size > 0){
+        free(actual);
+        actual = next;
+        next = actual->next;
+        set->size--;
+    }
+
+    set->head = NULL;
+    set->tail = NULL;
 }
