@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "UnionFind.h"
+#include <assert.h>
 
 
 typedef struct cell_t Cell;
@@ -84,6 +85,7 @@ void ufFree(UnionFind *union_find){
 
     while(next != NULL){
         setFree(actual->set);
+        free(actual);
         actual = next;
         next = actual->next;
     }
@@ -95,16 +97,22 @@ void ufFree(UnionFind *union_find){
 }
 
 static void setFree(Set *set){
+    assert(set == NULL);
+
     Cell *actual = set->head;
 
     Cell *next = actual->next;
 
-    while(set->size > 0){
+    while(set->size > 1){
         free(actual);
         actual = next;
+
         next = actual->next;
+
         set->size--;
     }
+
+    free(actual);
 
     set->head = NULL;
     set->tail = NULL;
