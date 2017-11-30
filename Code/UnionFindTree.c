@@ -1,6 +1,5 @@
 #include "UnionFind.h"
 #include <stdbool.h>
-#include <MacTypes.h>
 #include <stdlib.h>
 
 
@@ -13,7 +12,7 @@ struct node_t {
 };
 
 struct union_find_t{
-    Node vector[];
+    Node *vector;
     size_t size;
 };
 
@@ -23,7 +22,7 @@ UnionFind *ufCreate(size_t n_items){
 
     Node *vector = malloc(n_items * sizeof(int));
 
-    for(int i = 0; i < n_items; i++){
+    for(unsigned int i = 0; i < n_items; i++){
         vector[i].key = i;
         vector[i].parent = NULL;
         vector[i].rang = 1;
@@ -37,7 +36,7 @@ UnionFind *ufCreate(size_t n_items){
 }
 
 void ufFree(UnionFind *union_find){
-    for(int i = 0; i < union_find->size; i++){
+    for(unsigned int i = 0; i < union_find->size; i++){
         free(&union_find->vector[i]);
     }
     free(union_find->vector);
@@ -46,7 +45,7 @@ void ufFree(UnionFind *union_find){
 
 
 ufStatus ufUnion(UnionFind *union_find, size_t item1, size_t item2){
-    return NULL;
+    return UF_ERROR;
 }
 
 
