@@ -20,12 +20,18 @@ struct union_find_t{
 UnionFind *ufCreate(size_t n_items){
     UnionFind *unionFind = malloc(sizeof(*unionFind));
 
-    Node *vector = malloc(n_items * sizeof(int));
+    Node *vector = malloc(n_items * sizeof(Node*));
+
+    Node *actual = NULL;
 
     for(unsigned int i = 0; i < n_items; i++){
-        vector[i].key = i;
-        vector[i].parent = NULL;
-        vector[i].rang = 1;
+        actual = malloc(sizeof(Node));
+
+        actual->key = i;
+        actual->parent = NULL;
+        actual->rang = 1;
+
+        vector[i] = *actual;
     }
 
     unionFind->vector = vector;
