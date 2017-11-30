@@ -97,7 +97,7 @@ void ufFree(UnionFind *union_find){
 }
 
 static void setFree(Set *set){
-    assert(set == NULL);
+    assert(set != NULL);
 
     Cell *actual = set->head;
 
