@@ -55,7 +55,6 @@ UnionFind *ufCreate(size_t n_items) {
         if (i < n_items - 1) {
             current_node->next = malloc(sizeof(*current_node));
             current_node = current_node->next;
-            current_node = malloc(sizeof(*current_node));
             current_set = current_node->set;
             current_set = malloc(sizeof(*current_set));
             current_cel = current_set->head;
