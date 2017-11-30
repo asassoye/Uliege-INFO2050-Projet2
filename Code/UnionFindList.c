@@ -34,7 +34,9 @@ UnionFind *ufCreate(size_t n_items) {
     Set *current_set = malloc(sizeof(*current_set));;
     Cell *current_cel;
     Node *current_node = malloc(sizeof(*current_node));;
+    unionFind->first = current_node;
     for (size_t i = 0; i < n_items; ++i) {
+
         current_cel = malloc(sizeof(*current_cel));
         current_cel->key = (int) i;
         current_cel->set = current_set;
@@ -45,17 +47,30 @@ UnionFind *ufCreate(size_t n_items) {
         current_set->size = 1;
 
         current_node->set = current_set;
+
         printf("%d", current_node->set->head->key);
 
         if (i < n_items - 1) {
-
+            current_node->next = malloc(sizeof(*current_node));
             current_node = current_node->next;
-            current_node = malloc(sizeof(*current_node));
             current_set = current_node->set;
             current_set = malloc(sizeof(*current_set));
             current_cel = current_set->head;
         }
     }
+    unionFind->last = current_node;
+    current_node->next = NULL;
 
     return unionFind;
+}
+
+
+size_t ufComponentsCount(const UnionFind *union_find) {
+    Node *node = union_find->first;
+    size_t count = 0;
+    while (node != NULL) {
+        count += node->set->size;
+        node = node->next;
+    }
+    return count;
 }
