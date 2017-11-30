@@ -12,7 +12,7 @@ struct node_t {
 };
 
 struct union_find_t{
-    Node *vector;
+    Node **vector;
     size_t size;
 };
 
@@ -20,7 +20,7 @@ struct union_find_t{
 UnionFind *ufCreate(size_t n_items){
     UnionFind *unionFind = malloc(sizeof(*unionFind));
 
-    Node *vector = malloc(n_items * sizeof(Node*));
+    Node **vector = malloc(n_items * sizeof(Node*));
 
     Node *actual = NULL;
 
@@ -31,7 +31,7 @@ UnionFind *ufCreate(size_t n_items){
         actual->parent = NULL;
         actual->rang = 1;
 
-        vector[i] = *actual;
+        vector[i] = actual;
     }
 
     unionFind->vector = vector;
