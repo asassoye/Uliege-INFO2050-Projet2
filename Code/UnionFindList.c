@@ -2,58 +2,60 @@
 #include "UnionFind.h"
 
 
-typedef struct cell_t cell;
+typedef struct cell_t Cell;
+typedef struct set_t Set;
+typedef struct node_t Node;
 
 struct cell_t {
     int key;
-    cell *next;
-    UnionFind *set;
+    Cell *next;
+    Set *set;
+};
+
+struct set_t {
+    Cell *head;
+    Cell *tail;
+    size_t size;
+};
+
+struct node_t {
+    Set *set;
+    Node *next;
 };
 
 struct union_find_t {
-    cell *head;
-    cell *tail;
+    Node *first;
+    Node *last;
 };
 
 
 UnionFind *ufCreate(size_t n_items) {
     UnionFind *unionFind = malloc(sizeof(*unionFind));
-    cell *new = malloc(sizeof(cell));;
-    cell *current = new;
-    unionFind->head = current;
+    Set *current_set = malloc(sizeof(*current_set));;
+    Cell *current_cel;
+    Node *current_node = malloc(sizeof(*current_node));;
     for (size_t i = 0; i < n_items; ++i) {
-        current->key = (int) i;
-        current->set = unionFind;
-        current->next = NULL;
-        printf("%d ", current->key); //test
+        current_cel = malloc(sizeof(*current_cel));
+        current_cel->key = (int) i;
+        current_cel->set = current_set;
+        current_cel->next = NULL;
+
+        current_set->head = current_cel;
+        current_set->tail = current_cel;
+        current_set->size = 1;
+
+        current_node->set = current_set;
+        printf("%d", current_node->set->head->key);
 
         if (i < n_items - 1) {
-            new = malloc(sizeof(cell));
-            current->next = new;
-            current = current->next;
+
+            current_node = current_node->next;
+            current_node = malloc(sizeof(*current_node));
+            current_set = current_node->set;
+            current_set = malloc(sizeof(*current_set));
+            current_cel = current_set->head;
         }
     }
-    unionFind->tail = current;
-    //tests
-    current = unionFind->head;
-    printf("\nHead : %d ", current->key);
-    current = unionFind->tail;
-    printf("Tail : %d \n", current->key);
 
     return unionFind;
 }
-
-void ufFree(UnionFind *union_find) {
-    cell *current = union_find->head;
-    cell *next;
-    while (current != NULL) {
-        next = current->next;
-        printf("bla");
-        free(current);
-        current = next;
-        if (current != NULL)
-            next = current->next;
-    }
-    free(union_find);
-}
-
