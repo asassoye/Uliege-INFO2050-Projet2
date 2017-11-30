@@ -114,6 +114,5 @@ static void setFree(Set *set){
 
     free(actual);
 
-    set->head = NULL;
-    set->tail = NULL;
+    free(set);
 }
