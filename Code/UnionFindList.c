@@ -10,7 +10,7 @@ typedef struct node_t Node;
 static void setFree(Set *set);
 
 struct cell_t {
-    int key;
+    size_t key;
     Cell *next;
     Set *set;
 };
@@ -51,7 +51,7 @@ UnionFind *ufCreate(size_t n_items) {
 
         current_node->set = current_set;
 
-        printf("%d", current_node->set->head->key);
+        printf("%zu", current_node->set->head->key);
 
         if (i < n_items - 1) {
             current_node->next = malloc(sizeof(*current_node));
@@ -91,6 +91,7 @@ void ufFree(UnionFind *union_find){
     }
 
     setFree(actual->set);
+    free(actual);
 
     free(union_find);
 
@@ -115,4 +116,21 @@ static void setFree(Set *set){
     free(actual);
 
     free(set);
+}
+
+size_t ufFind(const UnionFind *union_find, size_t item) {
+    Node *node = union_find->first;
+    Set *set;
+    Cell *cell;
+    while (node != NULL) {
+        set = node->set;
+        cell = set->head;
+        while (cell != NULL) {
+            if (cell->key == item)
+                return cell->set->head->key;
+            cell = cell->next;
+        }
+        node = node->next;
+    }
+    return (size_t) -1;
 }
