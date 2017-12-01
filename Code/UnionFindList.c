@@ -7,12 +7,14 @@ typedef struct cell_t Cell;
 typedef struct set_t Set;
 typedef struct node_t Node;
 
-static void setFree(Set *set);
 
-struct cell_t {
-    size_t key;
-    Cell *next;
+struct union_find_t {
+    Node *first;
+};
+
+struct node_t {
     Set *set;
+    Node *next;
 };
 
 struct set_t {
@@ -21,49 +23,44 @@ struct set_t {
     size_t size;
 };
 
-struct node_t {
+struct cell_t {
+    size_t key;
+    Cell *next;
     Set *set;
-    Node *next;
-};
-
-struct union_find_t {
-    Node *first;
-    Node *last;
 };
 
 
 UnionFind *ufCreate(size_t n_items) {
     UnionFind *unionFind = malloc(sizeof(*unionFind));
-    Set *current_set = malloc(sizeof(*current_set));;
+    Set *current_set;
     Cell *current_cel;
-    Node *current_node = malloc(sizeof(*current_node));;
-    unionFind->first = current_node;
-    for (size_t i = 0; i < n_items; ++i) {
+    Node *current_node;
+    unionFind->first = malloc(sizeof(*current_node));;
+    current_node = unionFind->first;
+    current_node->set = malloc(sizeof(*current_set));
+    current_set = current_node->set;
+    current_set->head = malloc(sizeof(*current_cel));
+    current_cel = current_set->head;
 
-        current_cel = malloc(sizeof(*current_cel));
+    for (size_t i = 0; i < n_items; ++i) {
         current_cel->key = (int) i;
         current_cel->set = current_set;
         current_cel->next = NULL;
 
-        current_set->head = current_cel;
         current_set->tail = current_cel;
         current_set->size = 1;
 
-        current_node->set = current_set;
-
-        printf("%zu", current_node->set->head->key);
+        current_node->next = NULL;
 
         if (i < n_items - 1) {
             current_node->next = malloc(sizeof(*current_node));
             current_node = current_node->next;
+            current_node->set = malloc(sizeof(*current_set));
             current_set = current_node->set;
-            current_set = malloc(sizeof(*current_set));
+            current_set->head = malloc(sizeof(*current_cel));
             current_cel = current_set->head;
         }
     }
-    unionFind->last = current_node;
-    current_node->next = NULL;
-
     return unionFind;
 }
 
@@ -72,50 +69,35 @@ size_t ufComponentsCount(const UnionFind *union_find) {
     Node *node = union_find->first;
     size_t count = 0;
     while (node != NULL) {
-        count += node->set->size;
+        count++;
         node = node->next;
     }
     return count;
 }
 
+
 void ufFree(UnionFind *union_find) {
-    Node *actual = union_find->first;
-
-    Node *next = actual->next;
-
-    while (next != NULL) {
-        setFree(actual->set);
-        free(actual);
-        actual = next;
-        next = actual->next;
+    Node *node = union_find->first;
+    Node *next_node;
+    Set *set;
+    Cell *cell;
+    Cell *next_cell;
+    while (node != NULL) {
+        set = node->set;
+        cell = set->head;
+        while (cell != NULL) {
+            next_cell = cell->next;
+            free(cell);
+            cell = next_cell;
+        }
+        free(set);
+        next_node = node->next;
+        free(node);
+        node = next_node;
     }
-
-    setFree(actual->set);
-    free(actual);
-
     free(union_find);
-
 }
 
-static void setFree(Set *set) {
-    assert(set != NULL);
-
-    Cell *actual = set->head;
-
-    Cell *next = actual->next;
-
-    while (set->size > 1) {
-        free(actual);
-        actual = next;
-
-        next = actual->next;
-
-        set->size--;
-    }
-
-    free(actual);
-    free(set);
-}
 
 static ufStatus Union(UnionFind *unionFind, Set *set1, Set *set2) {
     Cell *tmp;
@@ -143,6 +125,7 @@ static ufStatus Union(UnionFind *unionFind, Set *set1, Set *set2) {
             } else {
                 prev->next = node->next;
             }
+            free(set2);
             free(node);
             return UF_MERGED;
         }

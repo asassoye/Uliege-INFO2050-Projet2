@@ -58,7 +58,7 @@ size_t mzSize(const Maze* maze);
  * PARAMETERS
  * maze         The maze
  * cell1        A cell
- * cell2        A neibhoring cell of $cell1$
+ * cell2        A neighboring cell of $cell1$
  *
  * RETURN
  * opened       True if the wall is opened, false otherwise
