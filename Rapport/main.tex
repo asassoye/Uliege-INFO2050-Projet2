@@ -7,8 +7,22 @@
 
 \section{Analyse théorique}
 \subsection{} %a
+	Pour implémenter la structure Union-Find à l'aide d'un arbre binaire, nous avons décidé de créer un vecteur dont chaque élément est initialement la racine d'un arbre binaire. Chaque arbre du vecteur représente donc un singleton. Lorsque nous procédons a une union, nous utilisons l'implémentation des arbres binaires vue au cours théorique.
+
 \subsection{} %b
-	
+	\begin{tabular}{|l||c|c|}
+	\hline
+  & Liste & Arbre\\
+  \hline\hline
+  Fonction UfUnion & & O(h)\footnote{h étant le nombre d'étage qu'il faut monter pour arriver à la racine} \\
+  Fonction UfFind & &
+  \\
+  \hline
+\end{tabular}
+
+\subsection{} %c
+\subsection{} %d
+
 \subsection{La structure de labyrinthe} %c
 La structure maze est composée de 4 éléments.
 \begin{itemize}
@@ -47,7 +61,7 @@ En effet, nous avons choisi d'utiliser la plupart du temps des entiers pour iden
 \End
 \End
 \end{codebox}
-	
+
 \subsection{Complexité en temps avec UnionFindList} %e
 \proc{mzIsValid}
 
@@ -55,7 +69,8 @@ En effet, nous avons choisi d'utiliser la plupart du temps des entiers pour iden
 
 \section{Analyse empirique}
 \subsection{} %a
-JE SUIS OCCUPE A FAIRE CA :) 
+	\includegraphics{Tests/List/list}
+	\includegraphics{Tests/Tree/tree}
 \subsection{} %b
 	
 
