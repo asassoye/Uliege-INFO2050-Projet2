@@ -7,6 +7,7 @@ typedef struct neighbour_t Neighbour;
 
 struct maze_t {
     size_t size;
+    UnionFind *unionFind;
     Neighbour **neighbours;
     size_t **convert;
 };
@@ -44,11 +45,13 @@ Maze *mzCreate(size_t size) {
     size_t vecSize = size * size;
     srand(time(NULL));
     Maze *maze = malloc(sizeof(Maze));
+
     maze->size = size;
+
     maze->neighbours = malloc(size * (size - 1) * 2 * sizeof(Neighbour));
     setNeighbours(maze->neighbours, size);
-    maze->convert = malloc(size * sizeof(size_t));
 
+    maze->convert = malloc(size * sizeof(size_t));
     size_t count = 0;
     for (size_t i = 0; i < size; ++i) {
         maze->convert[i] = malloc(size * sizeof(size_t));
@@ -58,22 +61,18 @@ Maze *mzCreate(size_t size) {
         }
     }
 
-    UnionFind *unionFind = ufCreate(vecSize);
+    maze->unionFind = ufCreate(vecSize);
     size_t rand1;
-    while (ufComponentsCount(unionFind) != 1) {
+    while (ufComponentsCount(maze->unionFind) != 1) {
         rand1 = rand() % (size * (size - 1) * 2);
         if (maze->neighbours[rand1]->wall == true) {
 
-            if (ufUnion(unionFind, maze->neighbours[rand1]->cell1, maze->neighbours[rand1]->cell2)
+            if (ufUnion(maze->unionFind, maze->neighbours[rand1]->cell1,
+                        maze->neighbours[rand1]->cell2)
                 == UF_MERGED)
                 maze->neighbours[rand1]->wall = false;
         }
     }
-    ufFree(unionFind);
-    FILE *stream = fopen("test.txt", "w");
-    if (stream != NULL)
-        mzPrint(maze, stream);
-    fclose(stream);
     return maze;
 }
 
@@ -87,7 +86,25 @@ void mzFree(Maze *maze) {
         free(maze->convert[i]);
     }
     free(maze->convert);
+
+    ufFree(maze->unionFind);
+
     free(maze);
+}
+
+size_t mzSize(const Maze *maze) {
+    return maze->size;
+}
+
+void mzSetWall(Maze *maze, Coord cell1, Coord cell2, bool close) {
+    size_t coord1 = maze->convert[cell1.row][cell1.col];
+    size_t coord2 = maze->convert[cell2.row][cell2.col];
+    for (size_t i = 0; i < (maze->size * (maze->size - 1) * 2); ++i) {
+        if ((maze->neighbours[i]->cell1 == coord1 && maze->neighbours[i]->cell2 == coord2) ||
+            (maze->neighbours[i]->cell1 == coord2 && maze->neighbours[i]->cell2 == coord1)) {
+            maze->neighbours[i]->wall = close;
+        }
+    }
 }
 
 bool mzIsWallClosed(const Maze *maze, Coord cell1, Coord cell2) {
@@ -101,6 +118,15 @@ bool mzIsWallClosed(const Maze *maze, Coord cell1, Coord cell2) {
     }
     return true;
 }
+
+
+bool mzIsValid(const Maze *maze) {
+    if (ufComponentsCount(maze->unionFind) > 1)
+        return false;
+    else
+        return true;
+}
+
 
 void mzPrint(const Maze *maze, FILE *out) {
     Coord coord1;

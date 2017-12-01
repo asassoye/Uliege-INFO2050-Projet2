@@ -1,5 +1,4 @@
 #include "UnionFind.h"
-#include <stdbool.h>
 #include <stdlib.h>
 
 
@@ -115,4 +114,3 @@ size_t ufComponentsCount(const UnionFind *union_find) {
     return count;
 
 }
-

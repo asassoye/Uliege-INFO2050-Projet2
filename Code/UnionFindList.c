@@ -66,17 +66,6 @@ UnionFind *ufCreate(size_t n_items) {
 }
 
 
-size_t ufComponentsCount(const UnionFind *union_find) {
-    Node *node = union_find->first;
-    size_t count = 0;
-    while (node != NULL) {
-        count++;
-        node = node->next;
-    }
-    return count;
-}
-
-
 void ufFree(UnionFind *union_find) {
     Node *node = union_find->first;
     Node *next_node;
@@ -183,4 +172,15 @@ size_t ufFind(const UnionFind *union_find, size_t item) {
         node = node->next;
     }
     return (size_t) -1;
+}
+
+
+size_t ufComponentsCount(const UnionFind *union_find) {
+    Node *node = union_find->first;
+    size_t count = 0;
+    while (node != NULL) {
+        count++;
+        node = node->next;
+    }
+    return count;
 }

@@ -3,7 +3,7 @@
  *      maze
  * SYNOPSIS
  *      maze [-s size] [-r random_seed] [-f file]
- * DESCIRPTION
+ * DESCRIPTION
  *      Build a random maze
  *      -s size     The size of the maze (the number of cells on a
  *                  side of the maze). Default: 10.
