@@ -8,6 +8,15 @@
 \section{Analyse théorique}
 \subsection{} %a
 	Pour implémenter la structure Union-Find à l'aide d'un arbre binaire, nous avons décidé de créer un vecteur dont chaque élément est initialement la racine d'un arbre binaire. Chaque arbre du vecteur représente donc un singleton. Lorsque nous procédons a une union, nous utilisons l'implémentation des arbres binaires vue au cours théorique.
+	\begin{figure}[h]
+		\caption{Après UfCreate}
+		\includegraphics[scale=0.75]{1}
+	\end{figure}
+
+	\begin{figure}[h]
+		\caption{Après UfUnion}
+		\includegraphics[scale=0.75]{2}
+	\end{figure}
 
 \subsection{} %b
 La complexité de \textit{ufFind} dans l'implémentation par listes est dans le meilleur cas $\Theta(Q)$ et dans le pire cas $\Theta(Q^2)$.
@@ -22,6 +31,9 @@ La complexité de \textit{ufUnion} dans l'implémentation par listes est identiq
   Fonction UfFind & & \\
   \hline
 \end{tabular}
+
+\subsection{} %c
+\subsection{} %d
 
 \subsection{La structure de labyrinthe} %c
 La structure maze est composée de 4 éléments.
@@ -62,7 +74,7 @@ En effet, nous avons choisi d'utiliser la plupart du temps des entiers pour iden
 \End
 \End
 \end{codebox}
-	
+
 \subsection{Complexité en temps avec UnionFindList} %e
 La complexité de \proc{mzCreate} est dans le meilleur cas est de $\Theta(Q^2)$ puisqu'il faut au minimum $Q-1$ unions pour rassembler tous les sous-ensembles et que la complexité au meilleur cas de \textit{ufUnion} est de $\Theta(Q)$.
 
@@ -73,9 +85,16 @@ La complexité au pire cas est difficile à définir puisque l'on choisi un mur 
 
 \section{Analyse empirique}
 \subsection{} %a
-	\includegraphics{Tests/List/list}
-	\includegraphics{Tests/Tree/tree}
-	
+	\begin{figure}[h]
+		\caption{Implémentation par liste}
+		\includegraphics{Tests/List/list}
+	\end{figure}
+
+	\begin{figure}[h]
+		\caption{Implémentation par Arbre}
+		\includegraphics{Tests/Tree/tree}
+	\end{figure}
+
 \subsection{} %b
 
 \end{document}
