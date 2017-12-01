@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include "UnionFind.h"
-#include <assert.h>
 
 
 typedef struct cell_t Cell;
@@ -56,8 +55,10 @@ UnionFind *ufCreate(size_t n_items) {
             current_node->next = malloc(sizeof(*current_node));
             current_node = current_node->next;
             current_node->set = malloc(sizeof(*current_set));
+
             current_set = current_node->set;
             current_set->head = malloc(sizeof(*current_cel));
+
             current_cel = current_set->head;
         }
     }
@@ -85,6 +86,7 @@ void ufFree(UnionFind *union_find) {
     while (node != NULL) {
         set = node->set;
         cell = set->head;
+
         while (cell != NULL) {
             next_cell = cell->next;
             free(cell);
@@ -181,21 +183,4 @@ size_t ufFind(const UnionFind *union_find, size_t item) {
         node = node->next;
     }
     return (size_t) -1;
-}
-
-//temporary function to print uf
-void ufPrint(UnionFind *unionFind) {
-    Node *node = unionFind->first;
-    Cell *cell;
-    while (node != NULL) {
-        printf("(");
-        cell = node->set->head;
-        while (cell != NULL) {
-            printf("%zu", cell->key);
-            cell = cell->next;
-        }
-        printf(")");
-        node = node->next;
-    }
-    printf("\n");
 }

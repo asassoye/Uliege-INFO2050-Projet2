@@ -82,7 +82,4 @@ size_t ufFind(const UnionFind *union_find, size_t item);
  * ------------------------------------------------------------------------- */
 size_t ufComponentsCount(const UnionFind *union_find);
 
-//temporary function to print uf
-void ufPrint(UnionFind *unionFind);
-
 #endif // _UNIONFIND_H_
