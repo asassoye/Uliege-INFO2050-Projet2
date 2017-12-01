@@ -22,15 +22,14 @@
 La complexité de \textit{ufFind} dans l'implémentation par listes est dans le meilleur cas $\Theta(Q)$ et dans le pire cas $\Theta(Q^2)$.
 
 La complexité de \textit{ufUnion} dans l'implémentation par listes est identique à la complexité de \textit{ufFind} puisqu'elle utilise cette fonction. Nous avons donc $\Theta(Q)$ dans le meilleur cas et $\Theta(Q^2)$ dans le pire cas.
+\newline
 
-	\begin{tabular}{|l||c|c|}
-	\hline
-  & Liste & Arbre\\
-  \hline\hline
-  Fonction UfUnion & & O(h)\footnote{h étant le nombre d'étage qu'il faut monter pour arriver à la racine} \\
-  Fonction UfFind & & \\
-  \hline
-\end{tabular}
+La complexité de \textit{ufFind} dans l'implémentation par arbre est dans le meilleur cas $\Theta(1)$ et dans le pire cas $\Theta(Q)$.
+
+La complexité de \textit{ufUnion} dans l'implémentation par arbre est dans le meilleur cas $\Theta(Q)$ et dans le pire cas $\Theta(Q^2)$ tel que vu au cours théorique.
+
+
+
 
 \subsection{La structure de labyrinthe} %c
 La structure maze est composée de 4 éléments.
@@ -117,6 +116,9 @@ La complexité de \proc{mzCreate} est dans le meilleur cas est de $\Theta(Q^2)$ 
 
 La complexité au pire cas est difficile à définir puisque l'on choisi un mur à retirer de manière aléatoire parmi tous les "emplacements possibles" de murs. Il faut donc tomber si un emplacement contenant un mur pour avancer dans la fonction.
 
+
+
+
 \bigbreak
 \proc{mzIsValid} est constant puisqu'il s'agit simplement d'aller lire la taille de l'\textit{UnionFind}.
 
@@ -133,5 +135,6 @@ La complexité au pire cas est difficile à définir puisque l'on choisi un mur 
 	\end{figure}
 
 \subsection{} %b
+	Nous gagnons pas mal de performances en utilisant l'implémentation par arbre. En effet, la courbe a une tangente plus grande pour l'implémentation par liste qui s'explique par la meilleure complexité de la fonction \textit{ufFind} pour l'implémentation par arbre.
 
 \end{document}
