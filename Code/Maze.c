@@ -83,6 +83,10 @@ void mzFree(Maze *maze) {
         free(maze->neighbours[i]);
     }
     free(maze->neighbours);
+    for (size_t i = 0; i < maze->size; ++i) {
+        free(maze->convert[i]);
+    }
+    free(maze->convert);
     free(maze);
 }
 
