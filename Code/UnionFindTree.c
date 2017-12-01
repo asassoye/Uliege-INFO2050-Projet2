@@ -103,6 +103,17 @@ size_t ufFind(const UnionFind *union_find, size_t item) {
 }
 
 size_t ufComponentsCount(const UnionFind *union_find) {
-    return 0;
+    Node **vector = union_find->vector;
+
+    size_t count = 0;
+
+    for(unsigned int i = 0; i < union_find->size; i++){
+        if(vector[i]->parent == NULL){
+            count++;
+        }
+    }
+
+    return count;
+
 }
 
