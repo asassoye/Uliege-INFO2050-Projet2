@@ -31,6 +31,9 @@ struct cell_t {
 
 UnionFind *ufCreate(size_t n_items) {
     UnionFind *unionFind = malloc(sizeof(*unionFind));
+    if (n_items < 1) {
+        return NULL;
+    }
     Set *current_set;
     Cell *current_cel;
     Node *current_node;
@@ -176,6 +179,8 @@ size_t ufFind(const UnionFind *union_find, size_t item) {
 
 
 size_t ufComponentsCount(const UnionFind *union_find) {
+    if (union_find == NULL)
+        return 0;
     Node *node = union_find->first;
     size_t count = 0;
     while (node != NULL) {

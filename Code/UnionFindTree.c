@@ -1,5 +1,5 @@
-#include "UnionFind.h"
 #include <stdlib.h>
+#include "UnionFind.h"
 
 
 typedef struct node_t Node;

@@ -66,7 +66,6 @@ Maze *mzCreate(size_t size) {
     while (ufComponentsCount(maze->unionFind) != 1) {
         rand1 = rand() % (size * (size - 1) * 2);
         if (maze->neighbours[rand1]->wall == true) {
-
             if (ufUnion(maze->unionFind, maze->neighbours[rand1]->cell1,
                         maze->neighbours[rand1]->cell2)
                 == UF_MERGED)
@@ -168,6 +167,7 @@ void mzPrint(const Maze *maze, FILE *out) {
                 fprintf(out, "--");
             fprintf(out, "+");
         }
-        fprintf(out, "\n");
+        if (i < maze->size - 1)
+            fprintf(out, "\n");
     }
 }
