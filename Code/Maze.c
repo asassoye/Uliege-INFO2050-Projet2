@@ -43,12 +43,13 @@ static void setNeighbours(Neighbour **neighbours, size_t size) {
 
 Maze *mzCreate(size_t size) {
     size_t vecSize = size * size;
+    size_t neighSize = size * (size - 1) * 2;
     srand(time(NULL));
     Maze *maze = malloc(sizeof(Maze));
 
     maze->size = size;
 
-    maze->neighbours = malloc(size * (size - 1) * 2 * sizeof(Neighbour));
+    maze->neighbours = malloc(neighSize * sizeof(Neighbour));
     setNeighbours(maze->neighbours, size);
 
     maze->convert = malloc(size * sizeof(size_t));
@@ -64,7 +65,7 @@ Maze *mzCreate(size_t size) {
     maze->unionFind = ufCreate(vecSize);
     size_t rand1;
     while (ufComponentsCount(maze->unionFind) != 1) {
-        rand1 = rand() % (size * (size - 1) * 2);
+        rand1 = rand() % neighSize;
         if (maze->neighbours[rand1]->wall == true) {
             if (ufUnion(maze->unionFind, maze->neighbours[rand1]->cell1,
                         maze->neighbours[rand1]->cell2)

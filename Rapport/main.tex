@@ -10,13 +10,16 @@
 	Pour implémenter la structure Union-Find à l'aide d'un arbre binaire, nous avons décidé de créer un vecteur dont chaque élément est initialement la racine d'un arbre binaire. Chaque arbre du vecteur représente donc un singleton. Lorsque nous procédons a une union, nous utilisons l'implémentation des arbres binaires vue au cours théorique.
 
 \subsection{} %b
+La complexité de \textit{ufFind} dans l'implémentation par listes est dans le meilleur cas $\Theta(Q)$ et dans le pire cas $\Theta(Q^2)$.
+
+La complexité de \textit{ufUnion} dans l'implémentation par listes est identique à la complexité de \textit{ufFind} puisqu'elle utilise cette fonction. Nous avons donc $\Theta(Q)$ dans le meilleur cas et $\Theta(Q^2)$ dans le pire cas.
+
 	\begin{tabular}{|l||c|c|}
 	\hline
   & Liste & Arbre\\
   \hline\hline
   Fonction UfUnion & & O(h)\footnote{h étant le nombre d'étage qu'il faut monter pour arriver à la racine} \\
-  Fonction UfFind & &
-  \\
+  Fonction UfFind & & \\
   \hline
 \end{tabular}
 
@@ -61,8 +64,11 @@ En effet, nous avons choisi d'utiliser la plupart du temps des entiers pour iden
 \end{codebox}
 	
 \subsection{Complexité en temps avec UnionFindList} %e
-Pour connaitre la complexité de \proc{mzCreate} il faut d'abord
+La complexité de \proc{mzCreate} est dans le meilleur cas est de $\Theta(Q^2)$ puisqu'il faut au minimum $Q-1$ unions pour rassembler tous les sous-ensembles et que la complexité au meilleur cas de \textit{ufUnion} est de $\Theta(Q)$.
 
+La complexité au pire cas est difficile à définir puisque l'on choisi un mur à retirer de manière aléatoire parmi tous les "emplacements possibles" de murs. Il faut donc tomber si un emplacement contenant un mur pour avancer dans la fonction.
+
+\bigbreak
 \proc{mzIsValid} est constant puisqu'il s'agit simplement d'aller lire la taille de l'\textit{UnionFind}.
 
 \section{Analyse empirique}
@@ -70,5 +76,6 @@ Pour connaitre la complexité de \proc{mzCreate} il faut d'abord
 	\includegraphics{Tests/List/list}
 	\includegraphics{Tests/Tree/tree}
 	
+\subsection{} %b
 
 \end{document}
