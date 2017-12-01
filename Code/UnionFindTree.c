@@ -68,9 +68,9 @@ ufStatus ufUnion(UnionFind *union_find, size_t item1, size_t item2) {
     Node *x = element1;
     Node *z = element2;
 
-    while(x != NULL){
+    while (x != NULL) {
         y = x;
-        if(z->key < x->key){
+        if (z->key < x->key) {
             x = x->leftChild;
         } else {
             x = x->rightChild;
@@ -80,9 +80,9 @@ ufStatus ufUnion(UnionFind *union_find, size_t item1, size_t item2) {
 
     if (y == NULL) {
         *element1 = *z;
-    }else if (z->key < y->key){
+    } else if (z->key < y->key) {
         y->leftChild = z;
-    }else {
+    } else {
         y->rightChild = z;
     }
 
@@ -99,7 +99,6 @@ size_t ufFind(const UnionFind *union_find, size_t item) {
     }
 
     return element->key;
-
 }
 
 size_t ufComponentsCount(const UnionFind *union_find) {
@@ -107,8 +106,8 @@ size_t ufComponentsCount(const UnionFind *union_find) {
 
     size_t count = 0;
 
-    for(unsigned int i = 0; i < union_find->size; i++){
-        if(vector[i]->parent == NULL){
+    for (unsigned int i = 0; i < union_find->size; i++) {
+        if (vector[i]->parent == NULL) {
             count++;
         }
     }
