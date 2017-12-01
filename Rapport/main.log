@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.14)  1 DEC 2017 21:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.4.14)  1 DEC 2017 22:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -740,27 +740,36 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \ALC@tlm=\skip64
 \algorithmicindent=\skip65
 ))
-(./main.aux)
+(./clrscode3e.sty
+Package: clrscode3e 
+\c@codelinenumber=\count132
+\c@indent=\count133
+\digitwidth=\skip66
+\savecode=\box34
+\codeboxwidth=\skip67
+\c@thisindent=\count134
+) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 3.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 3.
- (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
+LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 4.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 4.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    ... okay on input line 4.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -796,27 +805,27 @@ LaTeX Font Info:    ... okay on input line 3.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \degres on input line 3.
-LaTeX Info: Redefining \dots on input line 3.
+LaTeX Info: Redefining \degres on input line 4.
+LaTeX Info: Redefining \dots on input line 4.
 Package frenchb.ldf Info: Setting StandardItemizeEnv=true for
 (frenchb.ldf)             compatibility with enumitem package,
-(frenchb.ldf)              on input line 3.
+(frenchb.ldf)              on input line 4.
 Package frenchb.ldf Info: Setting StandardEnumerateEnv=true for
 (frenchb.ldf)             compatibility with enumitem package,
-(frenchb.ldf)              on input line 3.
-LaTeX Info: Redefining \up on input line 3.
+(frenchb.ldf)              on input line 4.
+LaTeX Info: Redefining \up on input line 4.
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count132
+\scratchcounter=\count135
 \scratchdimen=\dimen154
-\scratchbox=\box34
-\nofMPsegments=\count133
-\nofMParguments=\count134
+\scratchbox=\box35
+\nofMPsegments=\count136
+\nofMParguments=\count137
 \everyMPshowfont=\toks42
-\MPscratchCnt=\count135
+\MPscratchCnt=\count138
 \MPscratchDim=\dimen155
-\MPnumerator=\count136
-\makeMPintoPDFobject=\count137
+\MPnumerator=\count139
+\makeMPintoPDFobject=\count140
 \everyMPtoPDFconversion=\toks43
 ) (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -862,7 +871,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count138
+\c@lstlisting=\count141
 
 (./titlepage.tex <logo_ulg.png, id=1, 351.3125pt x 170.6375pt>
 File: logo_ulg.png Graphic file (type png)
@@ -873,29 +882,47 @@ Package pdftex.def Info: logo_ulg.png used on input line 76.
  [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./logo_
-ulg.png>]) [1] (./main.aux) ) 
+ulg.png>])
+LaTeX Font Info:    Try loading font information for U+msa on input line 20.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 20.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Warning: Indentation ends at level -1 in codebox on page 1.
+Warning: Indentation ends at level -1 in codebox on page 1.
+[1] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 7731 strings out of 493089
- 105816 string characters out of 6134842
- 183385 words of memory out of 5000000
- 11055 multiletter control sequences out of 15000+600000
- 12043 words of font info for 26 fonts, out of 8000000 for 9000
+ 7885 strings out of 493089
+ 107517 string characters out of 6134842
+ 189014 words of memory out of 5000000
+ 11182 multiletter control sequences out of 15000+600000
+ 20744 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,5n,35p,240b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvip
-s/cm-super/cm-super-t1.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/publ
-ic/cm-super/sfbx1200.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
-/cm-super/sfbx1440.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/c
-m-super/sfbx2074.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/cm-
-super/sfcc1200.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/cm-su
-per/sfcc1440.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/cm-supe
-r/sfcc1728.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/
-sfrm1095.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sf
-rm1200.pfb>
-Output written on main.pdf (2 pages, 103494 bytes).
+ 43i,6n,35p,364b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/
+cm-super-t1.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfb
+x1095.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx1
+200.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx144
+0.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfbx2074.
+pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/
+local/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb>
+Output written on main.pdf (2 pages, 195066 bytes).
 PDF statistics:
- 45 PDF objects out of 1000 (max. 8388607)
- 31 compressed objects within 1 object stream
+ 69 PDF objects out of 1000 (max. 8388607)
+ 49 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
