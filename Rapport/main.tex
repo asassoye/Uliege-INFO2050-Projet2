@@ -20,15 +20,12 @@
   \hline
 \end{tabular}
 
-\subsection{} %c
-\subsection{} %d
-
 \subsection{La structure de labyrinthe} %c
 La structure maze est composée de 4 éléments.
 \begin{itemize}
 \item size : contient la taille du labyrinthe. Pour une taille N, le labyrinthe sera un carré N x N.
 \item unionFind : contient l'ensemble disjoint qui a été utilisé pour créer le labyrinthe.
-\item neighbours : est un vecteur contenant les paires de cellules étant voisines.
+\item neighbours : est un vecteur contenant les paires de cellules étant voisines et un booléen égal à \textit{true} si elles sont séparées par un mur, à \textit{false} sinon.
 \item convert : est une matrice permettant de retrouver le numéro d'une case du labyrinthe à partir de ses coordonnées.
 \bigbreak
 En effet, nous avons choisi d'utiliser la plupart du temps des entiers pour identifier les cases afin de pouvoir utiliser la structure \textit{UnionFind} préalablement définie (et qui contenait des entiers). Ainsi nous représentons chaque case par un chiffre de $0$ à $N *N - 1$
@@ -39,12 +36,13 @@ En effet, nous avons choisi d'utiliser la plupart du temps des entiers pour iden
 \Procname{$\proc{mzCreate}(size)$}
 \li $\proc{Maze } maze$
 \li $maze.size = size$
+\li $maze.neighbours =$ all pairs of cells that are neighbours with a wall between each of them
 \li $maze.unionFind = \proc{ufCreate}(size)$
 \li \While $\proc{ufComponentsCount}(maze.unionFind) > 1$
 \Do
 \li 	$(coord1, coord2) =$ a random pair of neighbours
 \li		\If There is a wall
-\li \Then Remove it
+\li \Then $\proc{mzSetWall}(maze, coord1, coord2, false)$ //Remove the wall
 \li	$\proc{ufUnion}(maze.unionFind, coord1, coord2)$
 \End
 \End
@@ -61,9 +59,9 @@ En effet, nous avons choisi d'utiliser la plupart du temps des entiers pour iden
 \End
 \End
 \end{codebox}
-
+	
 \subsection{Complexité en temps avec UnionFindList} %e
-\proc{mzIsValid}
+Pour connaitre la complexité de \proc{mzCreate} il faut d'abord
 
 \proc{mzIsValid} est constant puisqu'il s'agit simplement d'aller lire la taille de l'\textit{UnionFind}.
 
@@ -71,7 +69,6 @@ En effet, nous avons choisi d'utiliser la plupart du temps des entiers pour iden
 \subsection{} %a
 	\includegraphics{Tests/List/list}
 	\includegraphics{Tests/Tree/tree}
-\subsection{} %b
 	
 
 \end{document}
